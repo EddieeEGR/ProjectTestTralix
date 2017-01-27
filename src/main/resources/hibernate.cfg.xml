@@ -11,5 +11,7 @@
   <property name="hibernate.format_sql">true</property>
   <property name="hibernate.current_session_contex_classs">thread</property>
   <mapping resource="Model/Tbestado.hbm.xml" />
+  <mapping resource="Model/Tbindustrias.hbm.xml" />
+  <mapping resource="Model/Clientes.hbm.xml" />
  </session-factory>
 </hibernate-configuration>

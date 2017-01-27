@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+ 
+</h:head>
+	<h:body style="text-align:center">
+	   <p:growl id="mensajes" showDetail="true" life="2000" />
+	   <h:form>
+	   	<p:panel header="Datos clientes" style="width:500px">
+	        <h:panelGrid columns="2" cellpadding="5" style=" height : 80px;">
+	        	<h:outputLabel value="Nombre:" />
+		        <p:inputText value="" id="Nombre" required="true" label="Nombre" />
+		        <h:outputLabel value="Apellido Paterno:" />
+		        <p:inputText value="" id="ApellidoP" required="true" label="ApellidoP" />
+		        <h:outputLabel value="Apellido Materno:" />
+		        <p:inputText value="" id="ApellidoM" label="ApellidoM" />
+		        <h:outputLabel  value="E-mail" />
+		        <p:inputText value="" id="Email" required="true" label="Email" />
+		        
+		        <h:panelGrid columns="2">  
+                    <h:outputText value="Seleccionar Estado " />  
+                    <p:selectOneMenu value="#{estadoBean.estado.id}" id="industrias">  
+                    	<f:selectItem itemLabel="Selecciona Categoria" itemValue="" />
+                        <f:selectItems value="#{estadoBean.listEstados}"/> 
+                    </p:selectOneMenu>
+                    
+                    <h:outputText value="Seleccionar Industria" />  
+                    <p:selectOneMenu value="#{estadoBean.estado.id}" id="industrias">  
+                    	<f:selectItem itemLabel="Selecciona Categoria" itemValue="" />
+                        <f:selectItems value="#{estadoBean.listEstados}"/> 
+                    </p:selectOneMenu>
+                </h:panelGrid>           
+		        <f:facet name="footer">
+		        
+		        </f:facet>
+	      </h:panelGrid>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

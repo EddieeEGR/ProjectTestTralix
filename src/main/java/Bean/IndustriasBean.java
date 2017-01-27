@@ -15,6 +15,7 @@ import Model.Tbindustrias;
 public class IndustriasBean {
 	private List<SelectItem> listIndustrias;
 	private Tbindustrias industrias;
+	//private List<Tbindustrias> listIndustrias;
 
 	public IndustriasBean(){
 		industrias = new Tbindustrias();
@@ -44,5 +45,8 @@ public class IndustriasBean {
 		return listIndustrias;
 	}
 	
+	//public void changeIndustria() {
+	  //  input = industrias.getId();
+	//}
 	
 }

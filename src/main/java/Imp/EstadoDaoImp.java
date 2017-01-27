@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 
 import Dao.EstadoDao;
 import Model.Tbestado;
+import Model.Tbmunicipio;
 import Util.HibernateUtil;
 
 public class EstadoDaoImp implements EstadoDao {
@@ -17,20 +18,39 @@ public class EstadoDaoImp implements EstadoDao {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		String hql = "FROM Tbestado";
+		try {
+			listarEstados = session.createQuery(hql).list();
+			t.commit();
+			session.close();
+			
+		}
+		catch(Exception e){
+			
+			System.out.println(e.getMessage());
+			t.rollback();
+		}
 		
-	
-	try {
-		listarEstados = session.createQuery(hql).list();
-		t.commit();
-		session.close();
+		return listarEstados;
+		}
+
+	@Override
+	public List<Tbmunicipio> listaMubicipios(Tbestado estado) {
+		List<Tbmunicipio> listarMunicipios = null;
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		String hql = "FROM Tbmunicipio WHERE id_estado ="+estado.getId();
+		try {
+			listarMunicipios = session.createQuery(hql).list();
+			t.commit();
+			session.close();
+			
+		}
+		catch(Exception e){
+			
+			System.out.println(e.getMessage());
+			t.rollback();
+		}
 		
-	}
-	catch(Exception e){
-		
-		System.out.println(e.getMessage());
-		t.rollback();
-	}
-	
-	return listarEstados;
-	}
+		return listarMunicipios;
+		}
 }

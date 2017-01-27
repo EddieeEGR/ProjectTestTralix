@@ -13,5 +13,6 @@
   <mapping resource="Model/Tbestado.hbm.xml" />
   <mapping resource="Model/Tbindustrias.hbm.xml" />
   <mapping resource="Model/Clientes.hbm.xml" />
+  <mapping resource="Model/Tbmunicipio.hbm.xml" />
  </session-factory>
 </hibernate-configuration>

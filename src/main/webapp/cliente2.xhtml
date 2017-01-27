@@ -2,14 +2,13 @@
 <html xmlns="http://www.w3c.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:p="http://primefaces.org/ui">
 <h:head>
  
 </h:head>
 	<h:body style="text-align:center">
 	   <p:growl id="mensajes" showDetail="true" life="2000" />
-	   <h:form id="insertarform">
+	   <h:form>
 	   	<p:panel header="Datos clientes" style="width:500px">
 	        <h:panelGrid columns="2" cellpadding="5" style="margin: 0 auto">
 	        	<h:outputText value="Nombre:" />
@@ -20,45 +19,33 @@
 		        <p:inputText value="#{clientesBean.clientes.apellidoM}" id="ApellidoM" label="ApellidoM" />
 		        <h:outputText  value="E-mail" />
 		        <p:inputText value="#{clientesBean.clientes.email}" id="Email" required="true" label="Email" />
-                <h:outputText value="Seleccionar Estado " />  
-                
+                 <h:outputText value="Seleccionar Industria" />  
+                <!--<p:selectOneMenu value="#{industriasBean.industrias.id}" id="industri">-->   
+                 <p:selectOneMenu value="#{clientesBean.industrias.id}" id="industri">  
+                	<f:selectItem itemLabel="Selecciona industria" itemValue="" />
+                	<f:selectItems value="#{industriasBean.listIndustrias}"/> 
+                	<f:ajax execute="industri" render="textbox" />
+                </p:selectOneMenu>
                 <p:selectOneMenu value="#{estadoBean.estado.id}" id="estado">  
                 	<f:selectItem itemLabel="Selecciona Categoria" itemValue="" />
                 	<f:selectItems value="#{estadoBean.listEstados}"/> 
                 	<f:ajax execute="estado" render="municipio"/>
                 </p:selectOneMenu>
-                
                 <h:outputText value="Seleccionar Municipio" />  
                 <p:selectOneMenu value="#{estadoBean.municipio.id}" id="municipio">  
                 	<f:selectItem itemLabel="Selecciona Municipio" itemValue="" />
                 	<f:selectItems value="#{estadoBean.listMunicipios}"/> 
                 </p:selectOneMenu>
-                 
-                <h:outputText value="Seleccionar Industria" />  
-                <p:selectOneMenu value="#{industriasBean.industrias.id}" id="industri">  
-                	<f:selectItem itemLabel="Selecciona industria" itemValue="" />
-                	<f:selectItems value="#{industriasBean.listIndustrias}"/> 
-                </p:selectOneMenu>              
-		        <f:facet name="footer">		     
+                <h:inputText id="textbox" value="#{industriasBean.industrias.id}" /> 
+                              
+                <p:commandButton value="Guardar"  actionListener="#{clientesBean.nuevoCliente()}"/>                
+                <p:commandButton value="Cancelar"></p:commandButton>
+                         
+		        <f:facet name="footer">
+		        
 		        </f:facet>
-	      </h:panelGrid>		
+	      </h:panelGrid>
 		</p:panel>
 	</h:form>
-	<p:separator/>
-	<script type="text/javascript">
-            window.onload = function() {
-                btnSubmit = document.getElementById('btnSubmit');
-                btnSubmit.disabled = #{testBean.btnDisabled};
-            }
-  </script>
-  
-  <h:form id="frmTest" prependId="false">
-  <h:outputText value="Acepto Politicas de Privacidad" />
-  <h:selectBooleanCheckbox id="chkBoolean" value="false" onclick="btnSubmit.disabled = !this.checked;" />
-  <p:commandButton value="Guardar"  actionListener="#{clientesBean.nuevoCliente()}" update="insertarform" disabled ="true" id="btnSubmit"/>
-  <p:commandButton value="Cancelar" actionListener="#{clientesBean.cancelar()}"  update="insertarform"/>
-  </h:form>
-   
 </h:body>
-
 </html>

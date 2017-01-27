@@ -3,20 +3,20 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 27/01/2017 12:39:49 PM by Hibernate Tools 5.2.0.CR1 -->
 <hibernate-mapping>
-    <class name="Model.Tbindustrias" table="tbindustrias" catalog="tralixtestdb01" optimistic-lock="version">
-        <id name="id" type="java.lang.Integer">
+    <class name="Model.Tbmunicipio" table="tbmunicipio" catalog="tralixtestdb01" optimistic-lock="version">
+        <id name="id" type="int">
             <column name="id" />
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
+        <many-to-one name="tbestado" class="Model.Tbestado" fetch="select">
+            <column name="id_estado" not-null="true" />
+        </many-to-one>
         <property name="nombre" type="string">
-            <column name="Nombre" length="20" not-null="true" />
-        </property>
-        <property name="clave" type="int">
-            <column name="Clave" not-null="true" />
+            <column name="nombre" length="20" not-null="true" />
         </property>
         <set name="clienteses" table="clientes" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="id_industria" not-null="true" />
+                <column name="id_municipio" not-null="true" />
             </key>
             <one-to-many class="Model.Clientes" />
         </set>

@@ -5,4 +5,5 @@
   <table-filter match-catalog="tralixtestdb01" match-name="clientes"/>
   <table-filter match-catalog="tralixtestdb01" match-name="tbestado"/>
   <table-filter match-catalog="tralixtestdb01" match-name="tbindustrias"/>
+  <table-filter match-catalog="tralixtestdb01" match-name="tbmunicipio"/>
 </hibernate-reverse-engineering>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26/01/2017 06:54:10 PM by Hibernate Tools 5.2.0.CR1 -->
+<!-- Generated 27/01/2017 12:39:49 PM by Hibernate Tools 5.2.0.CR1 -->
 <hibernate-mapping>
     <class name="Model.Tbestado" table="tbestado" catalog="tralixtestdb01" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -14,5 +14,11 @@
         <property name="clave" type="string">
             <column name="Clave" length="3" not-null="true" />
         </property>
+        <set name="tbmunicipios" table="tbmunicipio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_estado" not-null="true" />
+            </key>
+            <one-to-many class="Model.Tbmunicipio" />
+        </set>
     </class>
 </hibernate-mapping>
